@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tsubaki Consulting | Harry Tsubaki</title>
-<meta name="description" content="Tsubaki Consulting — growth strategy and execution for business owners who want results, not reports.">
+<title>Tsubaki Consulting | Harry Tsubaki — Business Consultant, Brisbane</title>
+<meta name="description" content="Harry Tsubaki — business consultant based in Brisbane. Strategy, analysis, and digital marketing for small business owners who want results.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -18,355 +18,666 @@
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
- 
+
 /* ═══ NAV ═══ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border-color .3s,backdrop-filter .3s}
-.nav.scrolled{background:rgba(255,255,255,.88);backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid var(--bdr)}
+.nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid var(--bdr)}
 .nav-inner{max-width:1320px;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem);display:flex;align-items:center;justify-content:space-between;height:68px}
-.nav-left{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-left svg{width:28px;height:28px}
-.nav-brand{font-weight:600;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t1);transition:color .3s}
-.nav--hero .nav-brand{color:#fff}
-.nav--hero .nav-left svg rect,.nav--hero .nav-left svg line{stroke:#fff}
+.nav-logo-wrap{position:relative;display:flex;align-items:center;text-decoration:none;height:36px}
+.nav-logo{height:34px;width:auto;transition:opacity .35s,visibility .35s;display:block}
+.nav-logo.logo-dark{position:absolute;left:0;top:50%;transform:translateY(-50%)}
+/* Hero (over video): show white, hide dark */
+.nav--hero .nav-logo.logo-white{opacity:1;visibility:visible}
+.nav--hero .nav-logo.logo-dark{opacity:0;visibility:hidden}
+/* Scrolled: show dark, hide white */
+.nav:not(.nav--hero) .nav-logo.logo-white{opacity:0;visibility:hidden}
+.nav:not(.nav--hero) .nav-logo.logo-dark{opacity:1;visibility:visible}
 .nav-center{display:flex;gap:2.5rem}
 .nav-center a{text-decoration:none;font-size:.8rem;color:var(--t3);font-weight:400;transition:color .2s}
 .nav--hero .nav-center a{color:rgba(255,255,255,.6)}
 .nav-center a:hover{color:var(--t1)}
 .nav--hero .nav-center a:hover{color:#fff}
 .nav-right{display:flex;align-items:center;gap:1.5rem}
-.si{font-size:.8rem;color:var(--t3);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .2s}
-.nav--hero .si{color:rgba(255,255,255,.55)}
+.si{font-size:.8rem;color:var(--t3);text-decoration:none;transition:color .2s}
+.nav--hero .si{color:rgba(255,255,255,.5)}
 .si:hover{color:var(--t1)} .nav--hero .si:hover{color:#fff}
-.si svg{width:11px;height:11px}
-.btn-nav{padding:10px 24px;background:var(--g600);color:#fff;text-decoration:none;border-radius:8px;font-size:.78rem;font-weight:500;transition:background .2s}
+.btn-nav{padding:10px 24px;background:var(--g600);color:#fff;text-decoration:none;border-radius:8px;font-size:.78rem;font-weight:500;transition:background .2s;white-space:nowrap}
 .btn-nav:hover{background:var(--g500)}
 .mob-tog{display:none;background:none;border:none;cursor:pointer;padding:6px}
-.mob-tog span{display:block;width:20px;height:1.5px;background:var(--t1);margin:5px 0;transition:background .3s}
+.mob-tog span{display:block;width:20px;height:1.5px;background:var(--t1);margin:5px 0}
 .nav--hero .mob-tog span{background:#fff}
 @media(max-width:768px){.mob-tog{display:block}.nav-center,.si{display:none}}
- 
-/* ═══ HERO — FULL WIDTH PHOTO BG ═══ */
-.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--bg2)}
-.hero-bg{position:absolute;inset:0;background:var(--bdr2);display:flex;align-items:center;justify-content:center}
-.hero-bg-placeholder{color:var(--t4);font-size:.8rem;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1}
-.hero-bg-placeholder svg{width:48px;height:48px;opacity:.2}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,rgba(0,0,0,.08) 50%,transparent 100%);pointer-events:none}
+
+/* ═══ HERO — VIDEO BACKGROUND ═══ */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;background:#0d1a10}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.15) 55%,rgba(0,0,0,.2) 100%);pointer-events:none;z-index:1}
 .hero-content{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;padding:0 clamp(1.5rem,3vw,3rem) clamp(3rem,5vw,5rem)}
 .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,4.5vw,4rem);line-height:1.12;color:#fff;margin-bottom:1.2rem}
-.hero-sub{font-size:.95rem;color:rgba(255,255,255,.7);max-width:460px;line-height:1.7;margin-bottom:2rem;font-weight:300}
+.hero-sub{font-size:.95rem;color:rgba(255,255,255,.72);max-width:480px;line-height:1.75;margin-bottom:2rem;font-weight:300}
 .hero-ctas{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;margin-bottom:3rem}
 .btn-w{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:#fff;color:var(--t1);text-decoration:none;border-radius:8px;font-size:.82rem;font-weight:500;transition:transform .2s,box-shadow .2s}
-.btn-w:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
-.btn-w svg{width:12px;height:12px}
-.btn-t{font-size:.82rem;color:rgba(255,255,255,.7);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s,gap .2s}
+.btn-w:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-w svg{width:12px;height:12px;flex-shrink:0}
+.btn-t{font-size:.82rem;color:rgba(255,255,255,.65);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s,gap .2s}
 .btn-t:hover{color:#fff;gap:8px}
 .btn-t svg{width:12px;height:12px}
 .hero-bar{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.15)}
-.hero-bar span{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
- 
+.hero-bar span{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+/* ═══ SHARED UTILITY ═══ */
+.section-lbl{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);font-weight:500;margin-bottom:.6rem}
+.section-h{font-family:var(--serif);font-weight:400;color:var(--t1);line-height:1.2}
+.section-h em{font-style:italic;color:var(--g500)}
+.btn-solid{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:var(--g600);color:#fff;text-decoration:none;border-radius:8px;font-size:.82rem;font-weight:500;transition:background .2s}
+.btn-solid:hover{background:var(--g500)}
+.btn-solid svg{width:12px;height:12px;flex-shrink:0}
+
 /* ═══ STATEMENT ═══ */
 .statement{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
 .statement-heading{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:400;text-align:center;color:var(--t1);line-height:1.15;margin-bottom:3rem}
 .statement-heading em{font-style:italic;color:var(--g500)}
-.statement-split{display:grid;grid-template-columns:1fr;gap:2rem}
 .statement-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
 .statement-text{max-width:380px;padding-top:.5rem}
 .statement-text p{font-size:.92rem;color:var(--t3);line-height:1.75;margin-bottom:1.2rem;font-weight:300}
-.btn-solid{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:var(--g600);color:#fff;text-decoration:none;border-radius:8px;font-size:.82rem;font-weight:500;transition:background .2s}
-.btn-solid:hover{background:var(--g500)}
-.btn-solid svg{width:12px;height:12px}
 .ph{background:var(--bdr2);border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .ph-placeholder{color:var(--t4);font-size:.72rem;display:flex;flex-direction:column;align-items:center;gap:6px}
 .ph-placeholder svg{width:28px;height:28px;opacity:.2}
-.ph-tall{aspect-ratio:3/4} .ph-wide{aspect-ratio:16/10} .ph-sq{aspect-ratio:1}
+.ph-tall{aspect-ratio:3/4} .ph-wide{aspect-ratio:16/10}
 .statement-photos{display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem}
 @media(max-width:768px){.statement-row{grid-template-columns:1fr}.statement-photos{grid-template-columns:1fr}}
- 
-/* ═══ SERVICES CAROUSEL ═══ */
-.services{max-width:1320px;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem) clamp(5rem,8vw,7rem)}
+
+/* ═══ SERVICES ═══ */
+.services{background:var(--bg2);padding:clamp(5rem,8vw,7rem) 0}
+.services-inner{max-width:1320px;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem)}
 .svc-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
 .svc-top-left{max-width:520px}
-.svc-lbl{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);font-weight:500;margin-bottom:.6rem}
-.svc-h{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:400;color:var(--t1);line-height:1.2}
-.svc-h em{font-style:italic;color:var(--g500)}
-.svc-scroll{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:1rem;scrollbar-width:thin;scrollbar-color:var(--bdr) transparent}
-.svc-scroll::-webkit-scrollbar{height:4px}
-.svc-scroll::-webkit-scrollbar-track{background:transparent}
-.svc-scroll::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:100px}
-.svc-card{min-width:340px;max-width:380px;flex-shrink:0;scroll-snap-align:start;border-radius:14px;overflow:hidden;background:var(--bg);border:1px solid var(--bdr2);transition:transform .3s,box-shadow .3s}
-.svc-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06)}
-.svc-card-img{width:100%;aspect-ratio:16/10;background:var(--bdr2);position:relative;display:flex;align-items:center;justify-content:center}
-.svc-arrow{position:absolute;top:12px;right:12px;width:32px;height:32px;background:rgba(255,255,255,.9);border-radius:8px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
-.svc-arrow svg{width:13px;height:13px;color:var(--t1)}
-.svc-card-body{padding:1.5rem}
-.svc-pill{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g500);font-weight:500;margin-bottom:.5rem}
-.svc-card-body h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--t1);margin-bottom:.5rem;line-height:1.3}
-.svc-card-body p{font-size:.82rem;color:var(--t3);line-height:1.65;font-weight:300;margin-bottom:1rem}
-.svc-tags{display:flex;flex-wrap:wrap;gap:5px}
-.svc-tag{font-size:.68rem;color:var(--t3);padding:4px 10px;background:var(--bg2);border-radius:100px;border:1px solid var(--bdr2)}
-.svc-nav{display:flex;gap:.5rem;margin-top:1.5rem}
-.svc-dot{width:8px;height:8px;border-radius:50%;background:var(--bdr);cursor:pointer;transition:background .2s}
-.svc-dot.active{background:var(--g500)}
- 
-/* ═══ PILLARS ═══ */
-.pillar{max-width:1320px;margin:0 auto;padding:clamp(4rem,6vw,5rem) clamp(1.5rem,3vw,3rem);border-top:1px solid var(--bdr2)}
-.pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem);align-items:center}
-.pillar-grid.reverse .pillar-text{order:2} .pillar-grid.reverse .pillar-img{order:1}
-.pillar-lbl{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);margin-bottom:.8rem}
-.pillar-h{font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,1.9rem);font-weight:400;color:var(--t1);line-height:1.25;margin-bottom:1rem}
-.pillar-desc{font-size:.9rem;color:var(--t3);line-height:1.75;font-weight:300;margin-bottom:1.5rem}
-.pillar-list{list-style:none}
-.pillar-list li{font-size:.84rem;color:var(--t2);padding:.5rem 0;border-top:1px solid var(--bdr2);display:flex;align-items:center;gap:10px;font-weight:300}
-.pillar-list li:last-child{border-bottom:1px solid var(--bdr2)}
-.pl-dot{width:5px;height:5px;border-radius:50%;background:var(--g400);flex-shrink:0}
-.pillar-img{border-radius:14px;overflow:hidden;background:var(--bdr2)}
-.pillar-img.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-@media(max-width:768px){.pillar-grid{grid-template-columns:1fr}.pillar-grid.reverse .pillar-text,.pillar-grid.reverse .pillar-img{order:unset}.pillar-img.pair{grid-template-columns:1fr}}
- 
+.svc-h{font-size:clamp(1.8rem,2.8vw,2.4rem)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+.svc-card{
+  border-radius:14px;overflow:hidden;background:var(--bg);
+  border:1px solid var(--bdr2);
+  position:relative;
+  transition:transform .35s cubic-bezier(.25,1,.5,1),box-shadow .35s cubic-bezier(.25,1,.5,1);
+  /* entrance animation */
+  opacity:0;transform:translateY(36px);
+}
+.svc-card.v{opacity:1;transform:translateY(0);transition:opacity .6s cubic-bezier(.25,1,.5,1),transform .6s cubic-bezier(.25,1,.5,1),box-shadow .35s,border-color .35s}
+.svc-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.08)}
+/* green accent bar on hover */
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--g500);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.25,1,.5,1)}
+.svc-card:hover::after{transform:scaleX(1)}
+/* stagger delays */
+.svc-card:nth-child(1){transition-delay:.05s}
+.svc-card:nth-child(2){transition-delay:.12s}
+.svc-card:nth-child(3){transition-delay:.19s}
+.svc-card:nth-child(4){transition-delay:.26s}
+.svc-card:nth-child(5){transition-delay:.33s}
+.svc-card:nth-child(6){transition-delay:.40s}
+.svc-card-img{width:100%;aspect-ratio:16/10;background:var(--bdr2);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.svc-card-img-inner{transition:transform .5s cubic-bezier(.25,1,.5,1);width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bdr2);overflow:hidden}
+.svc-card-img-inner img{width:100%;height:100%;object-fit:cover;display:block}
+.svc-card:hover .svc-card-img-inner{transform:scale(1.03)}
+.svc-icon{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--t4)}
+.svc-icon svg{width:28px;height:28px;opacity:.3}
+.svc-icon span{font-size:.65rem;opacity:.5}
+.svc-arrow{position:absolute;top:12px;right:12px;width:30px;height:30px;background:rgba(255,255,255,.92);border-radius:7px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.svc-arrow svg{width:12px;height:12px;color:var(--t1)}
+.svc-card-body{padding:1.4rem}
+.svc-pill{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g500);font-weight:500;margin-bottom:.4rem}
+.svc-card-body h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--t1);margin-bottom:.4rem;line-height:1.3}
+.svc-card-body p{font-size:.81rem;color:var(--t3);line-height:1.65;font-weight:300;margin-bottom:.9rem}
+.svc-tags{display:flex;flex-wrap:wrap;gap:4px}
+.svc-tag{font-size:.66rem;color:var(--t3);padding:3px 9px;background:var(--bg2);border-radius:100px;border:1px solid var(--bdr2)}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
+.testi-top{margin-bottom:3rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+.testi-card{background:var(--bg2);border-radius:16px;padding:2rem;position:relative;border:1px solid var(--bdr2)}
+.testi-quote{font-family:var(--serif);font-size:3.5rem;color:var(--g300);line-height:.8;margin-bottom:.8rem;opacity:.6}
+.testi-text{font-size:.88rem;color:var(--t2);line-height:1.75;font-weight:300;margin-bottom:1.5rem}
+.testi-meta{border-top:1px solid var(--bdr);padding-top:1rem}
+.testi-name{font-size:.82rem;font-weight:500;color:var(--t1);margin-bottom:.15rem}
+.testi-biz{font-size:.75rem;color:var(--t3)}
+.testi-stars{display:flex;gap:2px;margin-bottom:.6rem}
+.testi-stars svg{width:13px;height:13px;fill:var(--g500)}
+
+/* ═══ PROCESS ═══ */
+.process{background:var(--g700);padding:clamp(5rem,8vw,7rem) 0}
+.process-inner{max-width:1320px;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem)}
+.process-top{margin-bottom:3.5rem}
+.process-top .section-lbl{color:rgba(255,255,255,.35)}
+.process-top .section-h{color:#fff}
+.process-top .section-h em{color:var(--g300)}
+.process-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:calc(100%/12);right:calc(100%/12);height:1px;background:rgba(255,255,255,.15);z-index:0}
+@media(max-width:900px){
+  .process-steps{grid-template-columns:repeat(3,1fr);gap:2.5rem}
+  .process-steps::before{display:none}
+}
+@media(max-width:500px){.process-steps{grid-template-columns:repeat(2,1fr)}}
+.process-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border-radius:50%;background:#fff;border:none;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.2rem;color:var(--g700);margin-bottom:1.2rem;flex-shrink:0;transition:background .3s,color .3s}
+.process-step:hover .step-num{background:var(--g500);color:#fff}
+.step-title{font-size:.78rem;font-weight:500;color:#fff;margin-bottom:.35rem;line-height:1.3}
+.step-desc{font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;font-weight:300}
+
+/* ═══ PRICING ═══ */
+.pricing{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
+.pricing-top{margin-bottom:3rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;align-items:start}
+@media(max-width:800px){.pricing-grid{grid-template-columns:1fr}}
+.pricing-card{border-radius:16px;padding:2rem;border:1px solid var(--bdr2);position:relative;background:var(--bg)}
+.pricing-card.featured{background:var(--g600);border-color:var(--g600)}
+.pricing-badge{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--g100);color:var(--g600);padding:4px 10px;border-radius:100px;font-weight:500;display:inline-block;margin-bottom:1.2rem}
+.pricing-card.featured .pricing-badge{background:rgba(255,255,255,.15);color:#fff}
+.pricing-name{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--t1);margin-bottom:.3rem}
+.pricing-card.featured .pricing-name{color:#fff}
+.pricing-price{font-size:2rem;font-weight:600;color:var(--t1);line-height:1;margin-bottom:.3rem}
+.pricing-card.featured .pricing-price{color:#fff}
+.pricing-period{font-size:.72rem;color:var(--t3);margin-bottom:1.5rem}
+.pricing-card.featured .pricing-period{color:rgba(255,255,255,.5)}
+.pricing-divider{height:1px;background:var(--bdr2);margin-bottom:1.5rem}
+.pricing-card.featured .pricing-divider{background:rgba(255,255,255,.15)}
+.pricing-features{list-style:none;margin-bottom:2rem}
+.pricing-features li{font-size:.83rem;color:var(--t2);padding:.45rem 0;border-bottom:1px solid var(--bdr2);display:flex;align-items:flex-start;gap:8px;font-weight:300;line-height:1.45}
+.pricing-card.featured .pricing-features li{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.12)}
+.pricing-features li:first-child{border-top:1px solid var(--bdr2)}
+.pricing-card.featured .pricing-features li:first-child{border-color:rgba(255,255,255,.12)}
+.pricing-check{width:14px;height:14px;border-radius:50%;background:var(--g100);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.pricing-card.featured .pricing-check{background:rgba(255,255,255,.2)}
+.pricing-check svg{width:8px;height:8px;color:var(--g600)}
+.pricing-card.featured .pricing-check svg{color:#fff}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1.5px solid var(--g600);color:var(--g600);text-decoration:none;border-radius:8px;font-size:.82rem;font-weight:500;transition:background .2s,color .2s;width:100%;justify-content:center}
+.btn-outline:hover{background:var(--g600);color:#fff}
+.btn-pricing-featured{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:#fff;color:var(--g700);text-decoration:none;border-radius:8px;font-size:.82rem;font-weight:600;width:100%;justify-content:center;transition:box-shadow .2s}
+.btn-pricing-featured:hover{box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.pricing-note{text-align:center;margin-top:1.5rem;font-size:.75rem;color:var(--t4)}
+
+/* ═══ ABOUT ═══ */
+.about{background:var(--bg2);padding:clamp(5rem,8vw,7rem) 0}
+.about-inner{max-width:1320px;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem)}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(3rem,5vw,5rem);align-items:stretch}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-photo-wrap{position:relative;display:flex;flex-direction:column}
+.about-photo{flex:1;min-height:260px;border-radius:16px;overflow:hidden;background:var(--bdr2)}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-credentials{margin-top:1rem;background:var(--bg);border-radius:12px;padding:1.25rem;border:1px solid var(--bdr2)}
+.cred-item{display:flex;align-items:flex-start;gap:10px;padding:.5rem 0;border-bottom:1px solid var(--bdr2);font-size:.78rem;color:var(--t2);font-weight:300;line-height:1.4}
+.cred-item:last-child{border-bottom:none}
+.cred-dot{width:5px;height:5px;border-radius:50%;background:var(--g400);flex-shrink:0;margin-top:5px}
+.about-text{padding-top:.5rem}
+.about-text .section-lbl{margin-bottom:.6rem}
+.about-text .section-h{font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:1.5rem}
+.about-body p{font-size:.92rem;color:var(--t3);line-height:1.8;font-weight:300;margin-bottom:1.1rem}
+.about-body p:last-child{margin-bottom:0}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:1.5rem 0}
+.about-stat-num{font-family:var(--serif);font-size:2rem;color:var(--t1);line-height:1}
+.about-stat-label{font-size:.72rem;color:var(--t3);font-weight:300;margin-top:.2rem}
+
 /* ═══ CTA ═══ */
 .cta{max-width:1320px;margin:0 auto;padding:clamp(3rem,5vw,5rem) clamp(1.5rem,3vw,3rem) clamp(5rem,8vw,7rem)}
-.cta-card{background:var(--g600);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;min-height:400px}
+.cta-card{background:var(--g600);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;min-height:380px}
 .cta-content{padding:clamp(3rem,4vw,4rem);display:flex;flex-direction:column;justify-content:center}
-.cta-heading{font-family:var(--serif);font-size:clamp(2rem,3vw,2.6rem);font-weight:400;color:#fff;line-height:1.2;margin-bottom:1rem}
+.cta-heading{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:400;color:#fff;line-height:1.2;margin-bottom:.8rem}
 .cta-heading em{font-style:italic;color:var(--g100)}
-.cta-desc{font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:2rem;font-weight:300;max-width:420px}
+.cta-desc{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:2rem;font-weight:300;max-width:400px}
 .btn-wh{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:#fff;color:var(--g700);text-decoration:none;border-radius:8px;font-size:.84rem;font-weight:600;transition:transform .2s,box-shadow .3s;width:fit-content}
-.btn-wh:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.btn-wh:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.18)}
 .btn-wh svg{width:12px;height:12px}
-.cta-email{margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.35)}
-.cta-email a{color:rgba(255,255,255,.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)}
+.cta-email{margin-top:.9rem;font-size:.75rem;color:rgba(255,255,255,.3)}
+.cta-email a{color:rgba(255,255,255,.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18)}
 .cta-email a:hover{color:#fff}
-.cta-photo{background:var(--g500);display:flex;align-items:center;justify-content:center}
-.cta-ph-placeholder{color:rgba(255,255,255,.25);font-size:.72rem;display:flex;flex-direction:column;align-items:center;gap:8px}
-.cta-ph-placeholder svg{width:32px;height:32px;opacity:.25}
-@media(max-width:768px){.cta-card{grid-template-columns:1fr}.cta-photo{min-height:200px;order:-1}}
- 
+.cta-photo{background:var(--g500);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.cta-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+@media(max-width:768px){.cta-card{grid-template-columns:1fr}.cta-photo{min-height:220px;order:-1}}
+
 /* ═══ FOOTER ═══ */
-footer{border-top:1px solid var(--bdr);padding:2.5rem clamp(1.5rem,3vw,3rem)}
-.footer-inner{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-footer small{font-size:.72rem;color:var(--t4)}
-.fl{display:flex;gap:2rem}
-.fl a{font-size:.72rem;color:var(--t3);text-decoration:none;transition:color .2s}
-.fl a:hover{color:var(--t1)}
- 
+footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,3.5rem) clamp(1.5rem,3vw,3rem)}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}}
+.footer-logo{height:28px;width:auto;margin-bottom:.9rem;filter:brightness(0) invert(1);opacity:.6}
+.footer-tagline{font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.6;font-weight:300}
+.footer-col h4{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem;font-weight:500}
+.footer-col a,.footer-col span{display:block;font-size:.8rem;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:.5rem;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;flex-wrap:wrap;gap:.8rem}
+.footer-bottom small{font-size:.7rem;color:rgba(255,255,255,.2)}
+.footer-social{display:flex;gap:1rem}
+.social-link{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s}
+.social-link:hover{background:rgba(255,255,255,.12)}
+.social-link svg{width:16px;height:16px;fill:rgba(255,255,255,.5)}
+
 /* ═══ REVEALS ═══ */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.25,1,.5,1),transform .7s cubic-bezier(.25,1,.5,1)}
 .rv.v{opacity:1;transform:none}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav class="nav nav--hero" id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-left">
-      <svg viewBox="0 0 32 32" fill="none"><rect x=".5" y=".5" width="31" height="31" rx="3" stroke="#276839" stroke-width="1" fill="none"/><line x1="9" y1="8" x2="23" y2="8" stroke="#276839" stroke-width="1.5"/><line x1="16" y1="8" x2="16" y2="27" stroke="#276839" stroke-width="1.5"/><line x1="10" y1="13" x2="16" y2="23" stroke="#276839" stroke-width=".8" opacity=".35"/></svg>
-      <span class="nav-brand">Tsubaki</span>
+    <a href="#" class="nav-logo-wrap">
+      <img src="../../brand-assets/logos/logo-white.png" class="nav-logo logo-white" alt="Tsubaki Consulting">
+      <img src="../../brand-assets/logos/logo-black.png" class="nav-logo logo-dark" alt="Tsubaki Consulting">
     </a>
-    <button class="mob-tog" onclick="document.querySelector('.nav-center').classList.toggle('open')" aria-label="Menu"><span></span><span></span></button>
+    <button class="mob-tog" aria-label="Menu"><span></span><span></span></button>
     <div class="nav-center">
       <a href="#services">Services</a>
+      <a href="#process">Process</a>
       <a href="#about">About</a>
-      <a href="#pillars">How I Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="mailto:harry.tsubaki@gmail.com">Contact</a>
     </div>
     <div class="nav-right">
-      <a href="mailto:haruki.management@gmail.com" class="si">Sign In <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg></a>
-      <a href="#contact" class="btn-nav">Become a Client</a>
+      <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-nav">Book a Free Session</a>
     </div>
   </div>
 </nav>
- 
-<!-- HERO — FULL WIDTH PHOTO BACKGROUND -->
+
+<!-- HERO — VIDEO BACKGROUND -->
 <section class="hero">
-  <div class="hero-bg">
-    <div class="hero-bg-placeholder">
-      <svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg>
-      Full-width hero photo — you at work, in a meeting, or in an office setting<br>
-      <span style="font-size:.65rem;opacity:.5">Recommended: 1920×1080px minimum</span>
-    </div>
-  </div>
+  <video class="hero-video" autoplay loop muted playsinline poster=""
+    src="../../brand-assets/videos/hero.mp4">
+  </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1 class="rv">Your Trusted Partner for<br>Business Growth</h1>
-    <p class="hero-sub rv d1">I work alongside business owners — building growth strategies, running campaigns, and doing the hard work to turn plans into revenue.</p>
+    <h1 class="rv">Strategy and execution,<br>in one person.</h1>
+    <p class="hero-sub rv d1">I work with business owners in Brisbane and across Queensland. Good strategy, honest advice, and someone who actually does the work.</p>
     <div class="hero-ctas rv d2">
-      <a href="#contact" class="btn-w">Become a Client <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
-      <a href="#services" class="btn-t">Learn more <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+      <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-w">Book a Free Session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+      <a href="#services" class="btn-t">See how I help <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
     </div>
     <div class="hero-bar rv d3">
       <span>Strategy &middot; Analysis &middot; Marketing</span>
-      <span>Scroll to explore</span>
+      <span>Brisbane, Australia</span>
     </div>
   </div>
 </section>
- 
-<!-- STATEMENT SECTION -->
-<section class="statement" id="about">
+
+<!-- STATEMENT -->
+<section class="statement" id="about-intro">
   <h2 class="statement-heading rv">Where <em>strategy</em><br>meets <em>execution</em></h2>
- 
   <div class="statement-row">
     <div class="statement-text rv">
-      <p>I started Tsubaki Consulting because I saw the same problem everywhere: business owners getting generic advice from people who've never built anything themselves.</p>
-      <p>I sit in the gap. Top-tier strategic rigour with the accountability of someone who's invested in your outcome. I do the thinking <strong>and</strong> the doing.</p>
-      <a href="#contact" class="btn-solid">Become a Client <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+      <p>Most business owners I talk to have sat through presentations from consultants who've never run a business. They get the deck. Then they get the invoice. Then nothing changes.</p>
+      <p>I work differently. I look at the real numbers, tell you what I find, and stay to help you fix it. Strategy and execution from the same person, with no middleman in between.</p>
+      <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-solid">Book a Free Session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
     </div>
     <div class="statement-photos rv d1">
-      <div class="ph ph-tall"><div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>Your photo</div></div>
-      <div class="ph ph-wide" style="aspect-ratio:4/5"><div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>Office / workspace</div></div>
+      <div class="ph ph-tall"><div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>Photo</div></div>
+      <div class="ph" style="aspect-ratio:4/5"><div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg>Office</div></div>
     </div>
   </div>
 </section>
- 
-<!-- SERVICES CAROUSEL -->
+
+<!-- SERVICES -->
 <section class="services" id="services">
-  <div class="svc-top">
-    <div class="svc-top-left">
-      <div class="svc-lbl rv">Services</div>
-      <h2 class="svc-h rv d1">Explore how I help business owners <em>grow</em></h2>
+  <div class="services-inner">
+    <div class="svc-top">
+      <div class="svc-top-left">
+        <div class="section-lbl rv">Services</div>
+        <h2 class="section-h svc-h rv d1">How I can help</h2>
+      </div>
     </div>
-    <a href="#contact" class="btn-solid rv d2">Get started <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+    <div class="svc-grid" id="svcGrid">
+
+      <div class="svc-card">
+        <div class="svc-card-img"><div class="svc-card-img-inner"><img src="../../brand-assets/images/stock-business-advisory.jpg" alt="Business Advisory"></div><div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div></div>
+        <div class="svc-card-body">
+          <div class="svc-pill">Advisory</div>
+          <h3>Business Advisory</h3>
+          <p>I look at how your business is actually running, find where the money is leaking, and give you a plan you can act on this week. Not in three months.</p>
+          <div class="svc-tags"><span class="svc-tag">Operations</span><span class="svc-tag">Sales Funnels</span><span class="svc-tag">Growth Strategy</span></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-img"><div class="svc-card-img-inner"><img src="../../brand-assets/images/stock-business-analysis.jpg" alt="Business Analysis"></div><div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div></div>
+        <div class="svc-card-body">
+          <div class="svc-pill">Analysis</div>
+          <h3>Business Analysis</h3>
+          <p>Good decisions need real data. I go through your market, competitors, and numbers before making any recommendations.</p>
+          <div class="svc-tags"><span class="svc-tag">Market Research</span><span class="svc-tag">Audits</span><span class="svc-tag">Competitor Analysis</span></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-img"><div class="svc-card-img-inner"><img src="../../brand-assets/images/stock-digital-marketing.jpg" alt="Digital Marketing"></div><div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div></div>
+        <div class="svc-card-body">
+          <div class="svc-pill">Marketing</div>
+          <h3>Digital Marketing</h3>
+          <p>I build and run the campaigns myself. Google Ads, Meta Ads, and everything in between. Strategy without execution is just a wish list.</p>
+          <div class="svc-tags"><span class="svc-tag">Google Ads</span><span class="svc-tag">Meta Ads</span><span class="svc-tag">Campaigns</span></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-img"><div class="svc-card-img-inner"><img src="../../brand-assets/images/stock-cost-structure-review.jpg" alt="Cost Structure Review"></div><div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div></div>
+        <div class="svc-card-body">
+          <div class="svc-pill">Finance</div>
+          <h3>Cost Structure Review</h3>
+          <p>Most businesses are paying for things that stopped making sense years ago. I go through your cost base line by line and find where you can do better.</p>
+          <div class="svc-tags"><span class="svc-tag">Cost Analysis</span><span class="svc-tag">Margins</span><span class="svc-tag">Efficiency</span></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-img"><div class="svc-card-img-inner"><img src="../../brand-assets/images/stock-seo-ai.jpg" alt="SEO and AI Search Optimisation"></div><div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div></div>
+        <div class="svc-card-body">
+          <div class="svc-pill">Search</div>
+          <h3>SEO &amp; AI Search Optimisation</h3>
+          <p>Search is changing fast. I make sure your business shows up where customers are looking, including Google's AI overviews and AI-powered search tools.</p>
+          <div class="svc-tags"><span class="svc-tag">SEO</span><span class="svc-tag">Google</span><span class="svc-tag">AI Search</span></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-img"><div class="svc-card-img-inner"><img src="../../brand-assets/images/stock-web-design.jpg" alt="Website Design"></div><div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div></div>
+        <div class="svc-card-body">
+          <div class="svc-pill">Digital</div>
+          <h3>Website Design</h3>
+          <p>A website that converts visitors into enquiries. Built for performance, not just appearance. Clear message, fast load, and a path to booking.</p>
+          <div class="svc-tags"><span class="svc-tag">Design</span><span class="svc-tag">Conversion</span><span class="svc-tag">Development</span></div>
+        </div>
+      </div>
+
+    </div>
   </div>
- 
-  <div class="svc-scroll rv d2">
-    <div class="svc-card">
-      <div class="svc-card-img">
-        <div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>Advisory</div>
-        <div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div>
-      </div>
-      <div class="svc-card-body">
-        <div class="svc-pill">Service 1</div>
-        <h3>Business Advisory</h3>
-        <p>I get inside your operations, find what's broken, and build a plan you can act on this week.</p>
-        <div class="svc-tags"><span class="svc-tag">Operations</span><span class="svc-tag">Sales Funnels</span><span class="svc-tag">Growth Strategy</span></div>
-      </div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-card-img">
-        <div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>Analysis</div>
-        <div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div>
-      </div>
-      <div class="svc-card-body">
-        <div class="svc-pill">Service 2</div>
-        <h3>Business Analysis</h3>
-        <p>Good decisions need good data. I dig into your market, competitors, and numbers.</p>
-        <div class="svc-tags"><span class="svc-tag">Market Research</span><span class="svc-tag">Audits</span><span class="svc-tag">Competitor Analysis</span></div>
-      </div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-card-img">
-        <div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z"/></svg>Marketing</div>
-        <div class="svc-arrow"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></div>
-      </div>
-      <div class="svc-card-body">
-        <div class="svc-pill">Service 3</div>
-        <h3>Digital Marketing</h3>
-        <p>Strategy without execution is a wish list. I build and run the campaigns.</p>
-        <div class="svc-tags"><span class="svc-tag">Google Ads</span><span class="svc-tag">Meta Ads</span><span class="svc-tag">Websites</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="svc-nav"><span class="svc-dot active"></span><span class="svc-dot"></span><span class="svc-dot"></span></div>
 </section>
- 
-<!-- PILLAR 1 -->
-<section class="pillar" id="pillars">
-  <div class="pillar-grid rv">
-    <div class="pillar-img ph ph-tall">
-      <div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>Strategy session photo</div>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="process-top rv">
+      <div class="section-lbl">How it works</div>
+      <h2 class="section-h" style="font-size:clamp(1.8rem,2.8vw,2.4rem)">Six steps from first call to <em>real results</em></h2>
     </div>
-    <div class="pillar-text">
-      <div class="pillar-lbl">Pillar 1</div>
-      <h3 class="pillar-h">Strategy and execution, in one person</h3>
-      <p class="pillar-desc">Most consultants deliver a deck and disappear. I build the strategy, then stay to execute — campaigns, operations, the lot.</p>
-      <ul class="pillar-list">
-        <li><span class="pl-dot"></span>Discovery and diagnosis at no charge</li>
-        <li><span class="pl-dot"></span>Prioritised action plans, not 60-page reports</li>
-        <li><span class="pl-dot"></span>Hands-on execution from day one</li>
+    <div class="process-steps rv d1">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Free Session</div>
+        <div class="step-desc">30 minutes. No pitch. Just a conversation about your business.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Business Audit</div>
+        <div class="step-desc">I review your operations, financials, and market position.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Action Plan</div>
+        <div class="step-desc">We go through findings together and agree on priorities.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Sign Off</div>
+        <div class="step-desc">Clear scope, clear fees, no surprises.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-title">Work Starts</div>
+        <div class="step-desc">Strategy, campaigns, or whatever the audit identified.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <div class="step-title">Regular Check-ins</div>
+        <div class="step-desc">Monthly reviews to track progress and adjust as we go.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-top rv">
+    <div class="section-lbl">Pricing</div>
+    <h2 class="section-h" style="font-size:clamp(1.8rem,2.8vw,2.4rem)">Straightforward pricing.<br><em>No lock-in contracts.</em></h2>
+  </div>
+  <div class="pricing-grid">
+
+    <div class="pricing-card rv">
+      <span class="pricing-badge">One-off</span>
+      <div class="pricing-name">Business Audit</div>
+      <div class="pricing-price">From $990</div>
+      <div class="pricing-period">flat fee, includes debrief</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Full review of operations and financials</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Written report with prioritised recommendations</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>90-minute debrief session</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Competitor and market snapshot</li>
       </ul>
+      <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-outline">Get started</a>
     </div>
-  </div>
-</section>
- 
-<!-- PILLAR 2 -->
-<section class="pillar">
-  <div class="pillar-grid reverse rv">
-    <div class="pillar-text">
-      <div class="pillar-lbl">Pillar 2</div>
-      <h3 class="pillar-h">Top-tier quality, without the overhead</h3>
-      <p class="pillar-desc">Every deliverable is held to the same standard as a Big Four firm. You're paying for one person who cares — not a 200-person overhead.</p>
-      <ul class="pillar-list">
-        <li><span class="pl-dot"></span>Big4-level research, analysis, and strategy</li>
-        <li><span class="pl-dot"></span>Direct access to me — no juniors, no account managers</li>
-        <li><span class="pl-dot"></span>No lock-in contracts or minimum retainers</li>
+
+    <div class="pricing-card featured rv d1">
+      <span class="pricing-badge">Most popular</span>
+      <div class="pricing-name">Monthly Advisory</div>
+      <div class="pricing-price">$2,990</div>
+      <div class="pricing-period">per month, no lock-in</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Ongoing strategic support and direct access</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Weekly review and performance check-in</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Ad-hoc advice as issues come up</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Priority turnaround on requests</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Includes initial business audit</li>
       </ul>
+      <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-pricing-featured">Book a free session</a>
     </div>
-    <div class="pillar-img pair">
-      <div class="ph ph-tall"><div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>Data work</div></div>
-      <div class="ph ph-wide" style="aspect-ratio:3/4"><div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>Meeting</div></div>
-    </div>
-  </div>
-</section>
- 
-<!-- PILLAR 3 -->
-<section class="pillar">
-  <div class="pillar-grid rv">
-    <div class="pillar-img ph" style="aspect-ratio:16/10">
-      <div class="ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>Client collaboration photo</div>
-    </div>
-    <div class="pillar-text">
-      <div class="pillar-lbl">Pillar 3</div>
-      <h3 class="pillar-h">Your right-hand man, always available</h3>
-      <p class="pillar-desc">You talk to me. When you have a question at 9pm on a Tuesday, you text me and I answer. That's the service.</p>
-      <ul class="pillar-list">
-        <li><span class="pl-dot"></span>Direct communication, no layers</li>
-        <li><span class="pl-dot"></span>Based in Brisbane, working wherever you are</li>
-        <li><span class="pl-dot"></span>Results-driven — if I don't deliver, you leave</li>
+
+    <div class="pricing-card rv d2">
+      <span class="pricing-badge">Full service</span>
+      <div class="pricing-name">Full Execution</div>
+      <div class="pricing-price">Enquire</div>
+      <div class="pricing-period">custom scope and pricing</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Everything in Monthly Advisory</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Hands-on campaign management (Google, Meta)</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>Website and content support</li>
+        <li><span class="pricing-check"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></span>SEO and AI search optimisation</li>
       </ul>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdincE5kQBQPSfC8tyungo-mVtXl3i24rtXaCq1dBgGN3jptQ/viewform?usp=header" target="_blank" rel="noopener" class="btn-outline">Get a custom quote</a>
+    </div>
+
+  </div>
+  <p class="pricing-note rv">All prices are starting points. Custom quotes available depending on scope and business size.</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testi-top rv">
+    <div class="section-lbl">What clients say</div>
+    <h2 class="section-h" style="font-size:clamp(1.8rem,2.8vw,2.4rem)">Honest words from<br><em>real business owners</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card rv">
+      <div class="testi-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Harry came in, looked at everything from our booking system to how we handle weekend walk-ins, and gave us a clear list of what to fix first. No jargon, no big presentation. Revenue is up 28% in three months.</p>
+      <div class="testi-meta">
+        <div class="testi-name">Sarah K.</div>
+        <div class="testi-biz">Cafe owner &middot; Hospitality</div>
+      </div>
+    </div>
+    <div class="testi-card rv d1">
+      <div class="testi-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">I'd spoken to agencies before who quoted me $10k for a strategy deck I could've Googled myself. Harry charged a fair rate, built our Google Ads from scratch, and handed over something that actually runs. Night and day.</p>
+      <div class="testi-meta">
+        <div class="testi-name">Mark T.</div>
+        <div class="testi-biz">Director &middot; Trade Services</div>
+      </div>
+    </div>
+    <div class="testi-card rv d2">
+      <div class="testi-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">He's direct. If something isn't working he'll say so, and he'll tell you exactly why. That saved us from throwing more money at the wrong problem. Two years of "let's test and learn" and now we finally have a real plan.</p>
+      <div class="testi-meta">
+        <div class="testi-name">Jessica L.</div>
+        <div class="testi-biz">Founder &middot; E-commerce / Retail</div>
+      </div>
     </div>
   </div>
 </section>
- 
+
+<!-- ABOUT ME -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="about-photo-wrap rv">
+        <div class="about-photo">
+          <img src="../../brand-assets/images/harry-profile.jpeg" alt="Haruki Tsubaki, Business Consultant">
+        </div>
+        <div class="about-credentials">
+          <div class="cred-item"><span class="cred-dot"></span>Australian Tourism Export Council — Tourism Trade Ready</div>
+          <div class="cred-item"><span class="cred-dot"></span>Best of Queensland Experiences 2025</div>
+          <div class="cred-item"><span class="cred-dot"></span>QTIC (Queensland Tourism Industry Council) member</div>
+          <div class="cred-item"><span class="cred-dot"></span>10 years in business consulting and advisory</div>
+          <div class="cred-item"><span class="cred-dot"></span>7 years in tourism and hospitality management</div>
+        </div>
+      </div>
+      <div class="about-text rv d1">
+        <div class="section-lbl">About me</div>
+        <h2 class="section-h" style="font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:1.5rem">I work the same way<br>I was raised to.</h2>
+        <div class="about-stats">
+          <div><div class="about-stat-num">10+</div><div class="about-stat-label">Years in business consulting</div></div>
+          <div><div class="about-stat-num">7</div><div class="about-stat-label">Years in tourism and hospitality</div></div>
+          <div><div class="about-stat-num">QLD</div><div class="about-stat-label">Based in Brisbane</div></div>
+        </div>
+        <div class="about-body">
+          <p>I grew up in Japan and came to Australia with a background in tourism and hospitality. Seven years working inside those industries taught me how quickly a business can lose money to small, fixable problems — and how rarely anyone is willing to say it out loud.</p>
+          <p>That led me into consulting. I work with business owners who want a straight answer, not a report that sits on a shelf. I'll tell you what I find, even when it's not what you were hoping to hear. That honesty is the job, as far as I'm concerned.</p>
+          <p>The way I was raised, you show up, you do the work properly, and you keep your word. That's how I run every client relationship. You talk directly to me, get my real opinion, and I stay until the problem is actually fixed. No handoffs, no juniors, no going quiet after the invoice is sent.</p>
+          <p>I'm based in Brisbane and work with small and medium business owners across Queensland and beyond.</p>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-solid">Book a free session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="cta-card">
     <div class="cta-content">
-      <h2 class="cta-heading rv">Let's figure out what's <em>holding you back</em></h2>
-      <p class="cta-desc rv d1">Book a free discovery call. No pitch, no pressure — just a conversation about where your business is and where it could be.</p>
-      <a href="mailto:haruki.management@gmail.com?subject=Discovery%20Call%20%E2%80%94%20Tsubaki%20Consulting" class="btn-wh rv d2">Become a Client <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
-      <p class="cta-email rv d3">or email <a href="mailto:haruki.management@gmail.com">haruki.management@gmail.com</a></p>
+      <h2 class="cta-heading rv">Let's figure out what's<br><em>holding you back</em></h2>
+      <p class="cta-desc rv d1">Book a free 30-minute session. No pitch, no pressure. Just an honest conversation about where your business is and what it would take to grow it.</p>
+      <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-wh rv d2">Book a Free Session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+      <p class="cta-email rv d3">or email <a href="mailto:harry.tsubaki@gmail.com">harry.tsubaki@gmail.com</a></p>
     </div>
     <div class="cta-photo">
-      <div class="cta-ph-placeholder"><svg fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg>Photo or visual</div>
+      <img src="../../brand-assets/images/lets-figure-out.jpg" alt="Brisbane city skyline">
     </div>
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <small>&copy; 2026 Tsubaki Consulting. Brisbane, Australia.</small>
-    <div class="fl">
-      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:haruki.management@gmail.com">Email</a>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="../../brand-assets/logos/logo-white.png" class="footer-logo" alt="Tsubaki Consulting">
+        <p class="footer-tagline">Business consulting for owners who want<br>results, not reports. Based in Brisbane, QLD.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+61451217961">+61 451 217 961</a>
+        <a href="mailto:harry.tsubaki@gmail.com">harry.tsubaki@gmail.com</a>
+        <span>Brisbane, Queensland, Australia</span>
+        <span style="margin-top:.5rem">ABN 70 737 872 237</span>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#services">Services</a>
+        <a href="#process">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+        <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener">Book a session</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>&copy; 2026 Haruki Tsubaki &mdash; Tsubaki Consulting. All rights reserved.</small>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/haruki-tsubaki/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
- 
+
 <script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  const s=window.scrollY;
-  nav.classList.toggle('scrolled',s>40);
-  if(s>window.innerHeight*.7)nav.classList.remove('nav--hero');
-  else nav.classList.add('nav--hero');
-},{passive:true});
- 
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
- 
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+// Nav logo swap — tied to hero section visibility, not a fixed pixel threshold.
+// This prevents the white-text-on-white-background problem that happens when
+// the nav's glass background activates while the hero logo/text are still white.
+const nav = document.getElementById('nav');
+const heroSection = document.querySelector('.hero');
+const navObs = new IntersectionObserver(([entry]) => {
+  const overHero = entry.isIntersecting;
+  nav.classList.toggle('nav--hero', overHero);
+  nav.classList.toggle('scrolled', !overHero);
+}, { threshold: 0, rootMargin: '-68px 0px 0px 0px' });
+navObs.observe(heroSection);
+
+// Service card stagger on scroll
+const svcGrid = document.getElementById('svcGrid');
+const svcCards = svcGrid.querySelectorAll('.svc-card');
+const svcObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      svcCards.forEach(c => c.classList.add('v'));
+      svcObs.disconnect();
+    }
+  });
+}, { threshold: 0.1 });
+svcObs.observe(svcGrid);
+
+// General reveal
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); });
+}, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 </script>
- 
+
 </body>
 </html>
