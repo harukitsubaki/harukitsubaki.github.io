@@ -216,8 +216,13 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .about-body p{font-size:.92rem;color:var(--t3);line-height:1.8;font-weight:300;margin-bottom:1.1rem}
 .about-body p:last-child{margin-bottom:0}
 .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:1.5rem 0}
-.about-stat-num{font-family:var(--serif);font-size:2rem;color:var(--t1);line-height:1}
+.about-stat-num{font-family:var(--serif);font-size:2rem;color:var(--g600);line-height:1}
 .about-stat-label{font-size:.72rem;color:var(--t3);font-weight:300;margin-top:.2rem}
+
+/* ═══ STAT COUNTER ═══ */
+.stat-hero{text-align:center;margin-bottom:3rem}
+.stat-number{font-family:var(--serif);font-size:clamp(5rem,12vw,9rem);font-weight:400;color:var(--t1);line-height:1;letter-spacing:-.01em}
+.stat-sub{font-size:clamp(.95rem,1.8vw,1.2rem);color:var(--t3);margin-top:.5rem;font-weight:300}
 
 /* ═══ CTA ═══ */
 .cta{max-width:1320px;margin:0 auto;padding:clamp(3rem,5vw,5rem) clamp(1.5rem,3vw,3rem) clamp(5rem,8vw,7rem)}
@@ -305,17 +310,20 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
 
 <!-- STATEMENT -->
 <section class="statement" id="about-intro">
-  <h2 class="statement-heading rv">Small businesses <em>go broke</em><br>faster than <em>people think.</em></h2>
+  <div class="stat-hero rv">
+    <div class="stat-number"><span id="statCounter">0</span>%</div>
+    <div class="stat-sub">of small businesses fail within 5 years.</div>
+  </div>
   <div class="statement-row">
     <div class="statement-text rv">
-      <p>Not because the owner isn't working hard. Most are working harder than anyone around them. </p>
-      <p>They go broke because the wrong things are getting the time, the money is leaking in places nobody's looked at, and by the time the numbers make it obvious</p>
-      <p>Every week you spend figuring it out yourself is a week your competitors aren't standing still. The market doesn't wait. Your costs don't pause while you trial and error your way to a strategy.<p>
+      <p>Not because the owner isn't working hard. Most are working harder than anyone around them.</p>
+      <p>They go broke because the wrong things are getting the time, the money is leaking in places nobody's looked at, and by the time the numbers make it obvious — it's too late.</p>
+      <p>Every week you spend figuring it out yourself is a week your competitors aren't standing still. The market doesn't wait. Your costs don't pause while you trial and error your way to a strategy.</p>
       <p>The business owners who scale are not the ones who worked the hardest. They're the ones who got the right advice early enough to act on it.</p>
       <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-solid">Book a Free Session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
     </div>
     <div class="statement-photos rv d1">
-      <div class="ph ph-tall"><div class="ph-placeholder"><img src="https://harukitsubaki.github.io/Profile_picture.jpg" alt="Business Analysis"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>Photo</div></div>
+      <div class="ph ph-tall"><img src="https://harukitsubaki.github.io/Profile_picture.jpg" alt="Harry Tsubaki" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
     </div>
   </div>
 </section>
@@ -556,7 +564,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
     <div class="about-grid">
       <div class="about-photo-wrap rv">
         <div class="about-photo">
-          <img src="https://harukitsubaki.github.io/Profile_picture_3.jpeg" alt="Haruki Tsubaki, Business Consultant">
+          <img src="https://harukitsubaki.github.io/Profile_picture_3.jpg" alt="Haruki Tsubaki, Business Consultant">
         </div>
         <div class="about-credentials">
           <div class="cred-item"><span class="cred-dot"></span>Bachelor of Business — University of Queensland</div>
@@ -671,6 +679,30 @@ const obs = new IntersectionObserver(e => {
   e.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); });
 }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// Stat counter
+const statEl = document.getElementById('statCounter');
+if (statEl) {
+  const statTarget = 54;
+  let started = false;
+  const statObs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !started) {
+      started = true;
+      let startTime = null;
+      const duration = 1800;
+      const animate = ts => {
+        if (!startTime) startTime = ts;
+        const p = Math.min((ts - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        statEl.textContent = Math.round(eased * statTarget);
+        if (p < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+      statObs.disconnect();
+    }
+  }, { threshold: 0.3 });
+  statObs.observe(statEl.closest('.stat-hero'));
+}
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
