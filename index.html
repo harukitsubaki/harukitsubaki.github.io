@@ -84,7 +84,7 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .ph-placeholder{color:var(--t4);font-size:.72rem;display:flex;flex-direction:column;align-items:center;gap:6px}
 .ph-placeholder svg{width:28px;height:28px;opacity:.2}
 .ph-tall{aspect-ratio:3/4} .ph-wide{aspect-ratio:16/10}
-.statement-photos{display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem}
+.statement-photos{display:grid;grid-template-columns:1fr;gap:1.5rem}
 @media(max-width:768px){.statement-row{grid-template-columns:1fr}.statement-photos{grid-template-columns:1fr}}
 
 /* ═══ SERVICES ═══ */
@@ -204,8 +204,8 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(3rem,5vw,5rem);align-items:stretch}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
 .about-photo-wrap{position:relative;display:flex;flex-direction:column}
-.about-photo{flex:1;min-height:260px;border-radius:16px;overflow:hidden;background:var(--bdr2)}
-.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-photo{flex:1;min-height:260px;border-radius:16px;overflow:hidden;background:var(--bdr2);position:relative}
+.about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
 .about-credentials{margin-top:1rem;background:var(--bg);border-radius:12px;padding:1.25rem;border:1px solid var(--bdr2)}
 .cred-item{display:flex;align-items:flex-start;gap:10px;padding:.5rem 0;border-bottom:1px solid var(--bdr2);font-size:.78rem;color:var(--t2);font-weight:300;line-height:1.4}
 .cred-item:last-child{border-bottom:none}
@@ -305,17 +305,15 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
 
 <!-- STATEMENT -->
 <section class="statement" id="about-intro">
-  <h2 class="statement-heading rv">Small businesses <em>go broke</em><br>faster than <em>people think.</em></h2>
+  <h2 class="statement-heading rv">Where <em>strategy</em><br>meets <em>execution</em></h2>
   <div class="statement-row">
     <div class="statement-text rv">
-      <p>Not because the owner isn't working hard. Most are working harder than anyone around them. </p>
-      <p>They go broke because the wrong things are getting the time, the money is leaking in places nobody's looked at, and by the time the numbers make it obvious</p>
-      <p>Every week you spend figuring it out yourself is a week your competitors aren't standing still. The market doesn't wait. Your costs don't pause while you trial and error your way to a strategy.<p>
-      <p>The business owners who scale are not the ones who worked the hardest. They're the ones who got the right advice early enough to act on it.</p>
+      <p>Most business owners I talk to have sat through presentations from consultants who've never run a business. They get the deck. Then they get the invoice. Then nothing changes.</p>
+      <p>I work differently. I look at the real numbers, tell you what I find, and stay to help you fix it. Strategy and execution from the same person, with no middleman in between.</p>
       <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-solid">Book a Free Session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
     </div>
     <div class="statement-photos rv d1">
-      <div class="ph ph-tall"><div class="ph-placeholder"><img src="https://harukitsubaki.github.io/Profile_picture.jpg" alt="Business Analysis"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>Photo</div></div>
+      <div class="ph ph-tall" style="position:relative"><img src="https://harukitsubaki.github.io/Profile_picture.jpg" alt="Harry Tsubaki" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
     </div>
   </div>
 </section>
@@ -556,31 +554,29 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
     <div class="about-grid">
       <div class="about-photo-wrap rv">
         <div class="about-photo">
-          <img src="https://harukitsubaki.github.io/Profile_picture_3.jpeg" alt="Haruki Tsubaki, Business Consultant">
+          <img src="https://harukitsubaki.github.io/Profile_picture.jpeg" alt="Haruki Tsubaki, Business Consultant">
         </div>
         <div class="about-credentials">
-          <div class="cred-item"><span class="cred-dot"></span>Bachelor of Business — University of Queensland</div>
-          <div class="cred-item"><span class="cred-dot"></span>IBM Data Analyst IBM Data Analyst Specialization</div>
-          <div class="cred-item"><span class="cred-dot"></span>Brisbane's first Japanese representative reporter for Tourism Australia program</div>
-          <div class="cred-item"><span class="cred-dot"></span>Proud member of Queensland Tourism Industry Council (QTIC)</div>
-          <div class="cred-item"><span class="cred-dot"></span>Client awarded Best of Queensland Experiences 2025 - TEQ</div>
-          <div class="cred-item"><span class="cred-dot"></span>Client awarded Delicious 100 (2023) - The Courier-Mail</div>
-          <div class="cred-item"><span class="cred-dot"></span>Client acknowledged Tourism Trade Ready - Australian Tourism Export Council (ATEC)</div>
+          <div class="cred-item"><span class="cred-dot"></span>Australian Tourism Export Council — Tourism Trade Ready</div>
+          <div class="cred-item"><span class="cred-dot"></span>Best of Queensland Experiences 2025</div>
+          <div class="cred-item"><span class="cred-dot"></span>QTIC (Queensland Tourism Industry Council) member</div>
+          <div class="cred-item"><span class="cred-dot"></span>10 years in business consulting and advisory</div>
+          <div class="cred-item"><span class="cred-dot"></span>7 years in tourism and hospitality management</div>
         </div>
       </div>
       <div class="about-text rv d1">
         <div class="section-lbl">About me</div>
-        <h2 class="section-h" style="font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:1.5rem">If You're Ready.<br>I'm All In.</h2>
+        <h2 class="section-h" style="font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:1.5rem">I work the same way<br>I was raised to.</h2>
         <div class="about-stats">
-          <div><div class="about-stat-num">10+ Years</div><div class="about-stat-label">in business field</div></div>
-          <div><div class="about-stat-num">7+ Years</div><div class="about-stat-label">in tourism and hospitality</div></div>
-          <div><div class="about-stat-num">400%</div><div class="about-stat-label">growth achieved within a year</div></div>
+          <div><div class="about-stat-num">10+</div><div class="about-stat-label">Years in business consulting</div></div>
+          <div><div class="about-stat-num">7</div><div class="about-stat-label">Years in tourism and hospitality</div></div>
+          <div><div class="about-stat-num">QLD</div><div class="about-stat-label">Based in Brisbane</div></div>
         </div>
         <div class="about-body">
-          <p>I've worked alongside several business owners as their right hand. Watching decisions get made under real pressure, with real consequences, where the problem is sitting on the table and someone has to call it.</p>
-          <p>Through that, I've taken three small businesses from losing money to making it. Each one different. Each one with a version of the same underlying issue — too much effort going into the wrong places.</p>
-          <p>Which is why I work the way I do. As Michael Porter put it: "The essence of strategy is choosing what not to do." Effort is not the shortage. Direction is.</p>
-          <p>I'm based in Brisbane and work with small and medium business owners across Australia who are done spinning their wheels and ready to move.</p>
+          <p>I grew up in Japan and came to Australia with a background in tourism and hospitality. Seven years working inside those industries taught me how quickly a business can lose money to small, fixable problems — and how rarely anyone is willing to say it out loud.</p>
+          <p>That led me into consulting. I work with business owners who want a straight answer, not a report that sits on a shelf. I'll tell you what I find, even when it's not what you were hoping to hear. That honesty is the job, as far as I'm concerned.</p>
+          <p>The way I was raised, you show up, you do the work properly, and you keep your word. That's how I run every client relationship. You talk directly to me, get my real opinion, and I stay until the problem is actually fixed. No handoffs, no juniors, no going quiet after the invoice is sent.</p>
+          <p>I'm based in Brisbane and work with small and medium business owners across Queensland and beyond.</p>
         </div>
         <div style="margin-top:2rem">
           <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-solid">Book a free session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
