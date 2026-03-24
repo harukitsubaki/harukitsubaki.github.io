@@ -204,10 +204,10 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
   .pricing-note{padding:0 clamp(1.5rem,3vw,3rem)}
   .pricing-grid{display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0.75rem;padding:.5rem 0 2rem;scrollbar-width:none;align-items:center}
   .pricing-grid::-webkit-scrollbar{display:none}
-  .pricing-card{flex:0 0 48vw;max-width:none;scroll-snap-align:center;transition:transform .35s cubic-bezier(.25,1,.5,1),opacity .35s;transform:scale(.88);opacity:.5;padding:1.25rem}
-  .pricing-card.is-center{transform:scale(1);opacity:1}
-  .pricing-price{font-size:1.5rem}
-  .pricing-name{font-size:1.15rem}
+  .pricing-card{flex:0 0 48vw;max-width:none;scroll-snap-align:center;transition:transform .35s cubic-bezier(.25,1,.5,1),opacity .35s;transform:scale(.88) !important;opacity:.5 !important;padding:1.25rem !important}
+  .pricing-card.is-center{transform:scale(1) !important;opacity:1 !important}
+  .pricing-price{font-size:1.5rem !important}
+  .pricing-name{font-size:1.15rem !important}
 }
 .pricing-card{border-radius:16px;padding:2rem;border:1px solid var(--bdr2);position:relative;background:var(--bg)}
 .pricing-card.featured{background:var(--g600);border-color:var(--g600)}
@@ -581,7 +581,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
       </div>
       <div class="about-text rv d1">
         <div class="section-lbl">About me</div>
-        <h2 class="section-h" style="font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:1.5rem">Loyalty is a two-way street.<br>If you're in, I'm all-in.</h2>
+        <h2 class="section-h" style="font-size:clamp(1.8rem,2.8vw,2.4rem);margin-bottom:1.5rem">Loyalty is a two-way street.<br><em>If you're in, I'm all-in.</em></h2>
         <div class="about-stats">
           <div><div class="about-stat-num">10+ Years</div><div class="about-stat-label">in business field</div></div>
           <div><div class="about-stat-num">7+ Years</div><div class="about-stat-label">in tourism and hospitality</div></div>
@@ -778,9 +778,11 @@ function initPricingCarousel(){
   grid.addEventListener('scroll', update, {passive:true});
   const featured = grid.querySelector('.featured');
   setTimeout(() => {
-    if(featured) grid.scrollLeft = featured.offsetLeft - (grid.offsetWidth - featured.offsetWidth) / 2;
+    if(featured){
+      grid.scrollLeft = featured.offsetLeft - (grid.offsetWidth - featured.offsetWidth) / 2;
+    }
     update();
-  }, 80);
+  }, 200);
 }
 initPricingCarousel();
 
