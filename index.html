@@ -75,13 +75,15 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 
 /* ═══ STATEMENT ═══ */
 .statement{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
-.statement-center{max-width:640px;margin:0 auto;text-align:center}
-.statement-heading{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:400;color:var(--t1);line-height:1.15;margin-bottom:2rem}
+.statement-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:center}
+.statement-left{text-align:left}
+.statement-right{text-align:left}
+.statement-heading{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--t1);line-height:1.15;margin-bottom:2rem}
 .statement-heading em{font-style:italic;color:var(--g500)}
-.statement-desc{margin-top:2rem;text-align:center}
 .statement-desc p{font-size:.92rem;color:var(--t3);line-height:1.8;margin-bottom:1.1rem;font-weight:300}
 .statement-desc p:last-child{margin-bottom:0}
-.statement-cta{display:flex;justify-content:center;margin-top:1.8rem}
+.statement-cta{display:flex;margin-top:1.8rem}
+@media(max-width:768px){.statement-split{grid-template-columns:1fr}.statement-left{text-align:center}.statement-right{text-align:center}.statement-cta{justify-content:center}}
 
 /* ═══ SERVICES ═══ */
 .services{background:var(--bg2);padding:clamp(5rem,8vw,7rem) 0}
