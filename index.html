@@ -152,12 +152,19 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .testimonials{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
 .testi-top{margin-bottom:3rem}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pricing-nav{display:none}
+.testi-nav{display:none}
 @media(max-width:900px){
   .testimonials{padding-left:0;padding-right:0}
   .testi-top{padding:0 clamp(1.5rem,3vw,3rem);margin-bottom:2rem}
-  .testi-grid{display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:.5rem clamp(1.5rem,3vw,3rem) 1.5rem;scrollbar-width:none}
+  .testi-grid{display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:.5rem clamp(1.5rem,3vw,3rem) 1rem;scrollbar-width:none}
   .testi-grid::-webkit-scrollbar{display:none}
-  .testi-card{flex:0 0 82vw;max-width:340px;scroll-snap-align:center}
+  .testi-card{flex:0 0 82vw;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always}
+  .testi-nav{display:flex;justify-content:center;align-items:center;gap:.75rem;padding:.75rem clamp(1.5rem,3vw,3rem) 0}
+  .testi-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--bdr);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+  .testi-btn:active{background:var(--bg2)}
+  .testi-btn svg{width:14px;height:14px;color:var(--t2)}
+  .testi-btn:disabled{opacity:.28;pointer-events:none}
 }
 .testi-card{background:var(--bg2);border-radius:16px;padding:2rem;position:relative;border:1px solid var(--bdr2)}
 .testi-quote{font-family:var(--serif);font-size:3.5rem;color:var(--g300);line-height:.8;margin-bottom:.8rem;opacity:.6}
@@ -204,10 +211,19 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
   .pricing-note{padding:0 clamp(1.5rem,3vw,3rem)}
   .pricing-grid{display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0.75rem;padding:.5rem 0 2rem;scrollbar-width:none;align-items:center}
   .pricing-grid::-webkit-scrollbar{display:none}
-  .pricing-card{flex:0 0 48vw;max-width:none;scroll-snap-align:center;transition:transform .35s cubic-bezier(.25,1,.5,1),opacity .35s;transform:scale(.88) !important;opacity:.5 !important;padding:1.25rem !important}
+  .pricing-nav{display:flex;justify-content:center;align-items:center;gap:.75rem;padding:.75rem clamp(1.5rem,3vw,3rem) 0}
+  .pricing-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--bdr);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .pricing-btn:active{background:var(--bg2)}
+  .pricing-btn svg{width:14px;height:14px;color:var(--t2)}
+  .pricing-btn:disabled{opacity:.28;pointer-events:none}
+  .pricing-card{flex:0 0 55vw;max-width:none;scroll-snap-align:center;scroll-snap-stop:always;transition:transform .35s cubic-bezier(.25,1,.5,1),opacity .35s;transform:scale(.9) !important;opacity:.5 !important;padding:1.25rem !important}
   .pricing-card.is-center{transform:scale(1) !important;opacity:1 !important}
   .pricing-price{font-size:1.5rem !important}
   .pricing-name{font-size:1.15rem !important}
+  .pricing-features{margin-bottom:1.25rem !important}
+  .pricing-features li{font-size:.75rem !important;padding:.35rem 0 !important}
+  .pricing-divider{margin-bottom:1rem !important}
+  .pricing-period{margin-bottom:1rem !important}
 }
 .pricing-card{border-radius:16px;padding:2rem;border:1px solid var(--bdr2);position:relative;background:var(--bg)}
 .pricing-card.featured{background:var(--g600);border-color:var(--g600)}
@@ -558,6 +574,14 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
     </div>
 
   </div>
+  <div class="pricing-nav">
+    <button class="pricing-btn" id="pricingPrev" aria-label="Previous option">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+    </button>
+    <button class="pricing-btn" id="pricingNext" aria-label="Next option">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+    </button>
+  </div>
   <p class="pricing-note rv">All prices are starting points. Custom quotes available depending on scope and business size.</p>
 </section>
 
@@ -653,6 +677,14 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
         <div class="testi-biz">Founder &middot; Travel Agency</div>
       </div>
     </div>
+  </div>
+  <div class="testi-nav">
+    <button class="testi-btn" id="testiPrev" aria-label="Previous testimonial">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+    </button>
+    <button class="testi-btn" id="testiNext" aria-label="Next testimonial">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+    </button>
   </div>
 </section>
 
@@ -776,26 +808,44 @@ function initPricingCarousel(){
     cards.forEach(c => c.classList.toggle('is-center', c === best));
   }
   grid.addEventListener('scroll', update, {passive:true});
-  const featured = grid.querySelector('.featured');
-  setTimeout(() => {
-    if(featured){
-      grid.scrollLeft = featured.offsetLeft - (grid.offsetWidth - featured.offsetWidth) / 2;
-    }
+  let pricingCurrent = 1;
+  const prevBtn = document.getElementById('pricingPrev');
+  const nextBtn = document.getElementById('pricingNext');
+  function scrollToCard(idx){
+    if(idx < 0) idx = 0;
+    if(idx >= cards.length) idx = cards.length - 1;
+    pricingCurrent = idx;
+    grid.scrollTo({left: cards[pricingCurrent].offsetLeft - (grid.offsetWidth - cards[pricingCurrent].offsetWidth) / 2, behavior:'smooth'});
+    if(prevBtn) prevBtn.disabled = pricingCurrent === 0;
+    if(nextBtn) nextBtn.disabled = pricingCurrent === cards.length - 1;
     update();
-  }, 200);
+  }
+  if(prevBtn) prevBtn.addEventListener('click', () => scrollToCard(pricingCurrent - 1));
+  if(nextBtn) nextBtn.addEventListener('click', () => scrollToCard(pricingCurrent + 1));
+  setTimeout(() => scrollToCard(1), 200);
 }
 initPricingCarousel();
 
-// Testimonials — scroll to middle card on mobile
+// Testimonials carousel with arrow nav
 function initTestiCarousel(){
   const grid = document.querySelector('.testi-grid');
   if(!grid || window.innerWidth > 900) return;
   const cards = grid.querySelectorAll('.testi-card');
   if(cards.length < 2) return;
-  setTimeout(() => {
-    const mid = cards[1];
-    grid.scrollLeft = mid.offsetLeft - (grid.offsetWidth - mid.offsetWidth) / 2;
-  }, 80);
+  let current = 1;
+  const prevBtn = document.getElementById('testiPrev');
+  const nextBtn = document.getElementById('testiNext');
+  function scrollTo(idx){
+    if(idx < 0) idx = 0;
+    if(idx >= cards.length) idx = cards.length - 1;
+    current = idx;
+    grid.scrollTo({left: cards[current].offsetLeft - (grid.offsetWidth - cards[current].offsetWidth) / 2, behavior:'smooth'});
+    if(prevBtn) prevBtn.disabled = current === 0;
+    if(nextBtn) nextBtn.disabled = current === cards.length - 1;
+  }
+  if(prevBtn) prevBtn.addEventListener('click', () => scrollTo(current - 1));
+  if(nextBtn) nextBtn.addEventListener('click', () => scrollTo(current + 1));
+  setTimeout(() => scrollTo(1), 200);
 }
 initTestiCarousel();
 
