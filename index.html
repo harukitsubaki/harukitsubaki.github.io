@@ -75,15 +75,15 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 
 /* ═══ STATEMENT ═══ */
 .statement{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
-.statement-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:center}
-.statement-left{text-align:left}
+.statement-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:stretch}
+.statement-left{text-align:left;display:flex;flex-direction:column;justify-content:space-between}
 .statement-right{text-align:left}
 .statement-heading{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--t1);line-height:1.15;margin-bottom:2rem}
 .statement-heading em{font-style:italic;color:var(--g500)}
 .statement-desc p{font-size:.92rem;color:var(--t3);line-height:1.8;margin-bottom:1.1rem;font-weight:300}
 .statement-desc p:last-child{margin-bottom:0}
 .statement-cta{display:flex;margin-top:1.8rem}
-@media(max-width:768px){.statement-split{grid-template-columns:1fr}.statement-left{text-align:center}.statement-right{text-align:center}.statement-cta{justify-content:center}}
+@media(max-width:768px){.statement-split{grid-template-columns:1fr}.statement-left{text-align:center;align-items:center}.statement-right{text-align:center}.statement-cta{justify-content:center}.stat-hero{flex-direction:column;align-items:center;justify-content:center;gap:.4rem;width:100%}.stat-number{text-align:center;width:100%}.stat-sub{text-align:center;margin:0 auto;max-width:200px}}
 
 /* ═══ SERVICES ═══ */
 .services{background:var(--bg2);padding:clamp(5rem,8vw,7rem) 0}
@@ -93,7 +93,25 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .svc-h{font-size:clamp(1.8rem,2.8vw,2.4rem)}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:580px){.svc-grid{grid-template-columns:1fr}}
+@media(max-width:580px){
+  .svc-grid{grid-template-columns:1fr;gap:.5rem}
+  .svc-card{cursor:pointer}
+  .svc-card-img{height:144px;aspect-ratio:unset;position:relative}
+  .svc-card-img::after{display:none}
+  .svc-arrow{display:none}
+  .svc-card-body{position:absolute;top:0;left:0;right:0;height:144px;padding:.9rem 1.2rem;display:flex;flex-direction:column;justify-content:flex-start;z-index:2;background:none}
+  .svc-pill{color:rgba(255,255,255,.9) !important;margin-bottom:.3rem;font-size:.58rem;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+  .svc-card-body h3{color:#fff !important;font-size:1rem;margin-bottom:0;text-shadow:0 1px 3px rgba(0,0,0,.9),0 2px 12px rgba(0,0,0,.7)}
+  .svc-card-body p{display:none}
+  .svc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
+  .svc-tag{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.85);font-size:.6rem}
+  .svc-card.open .svc-card-body{position:static;height:auto;background:var(--bg);padding:1rem 1.4rem}
+  .svc-card.open .svc-pill{color:var(--g500)}
+  .svc-card.open .svc-card-body h3{color:var(--t1);margin-bottom:.35rem;text-shadow:none}
+  .svc-card.open .svc-card-body p{display:block}
+  .svc-card.open .svc-tags{margin-top:0}
+  .svc-card.open .svc-tag{background:var(--bg2);border-color:var(--bdr2);color:var(--t3)}
+}
 .svc-card{
   border-radius:14px;overflow:hidden;background:var(--bg);
   border:1px solid var(--bdr2);
@@ -134,7 +152,13 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .testimonials{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
 .testi-top{margin-bottom:3rem}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+@media(max-width:900px){
+  .testimonials{padding-left:0;padding-right:0}
+  .testi-top{padding:0 clamp(1.5rem,3vw,3rem);margin-bottom:2rem}
+  .testi-grid{display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:.5rem clamp(1.5rem,3vw,3rem) 1.5rem;scrollbar-width:none}
+  .testi-grid::-webkit-scrollbar{display:none}
+  .testi-card{flex:0 0 82vw;max-width:340px;scroll-snap-align:center}
+}
 .testi-card{background:var(--bg2);border-radius:16px;padding:2rem;position:relative;border:1px solid var(--bdr2)}
 .testi-quote{font-family:var(--serif);font-size:3.5rem;color:var(--g300);line-height:.8;margin-bottom:.8rem;opacity:.6}
 .testi-text{font-size:.88rem;color:var(--t2);line-height:1.75;font-weight:300;margin-bottom:1.5rem}
@@ -154,10 +178,16 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .process-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;position:relative}
 .process-steps::before{content:'';position:absolute;top:28px;left:calc(100%/12);right:calc(100%/12);height:1px;background:rgba(255,255,255,.15);z-index:0}
 @media(max-width:900px){
-  .process-steps{grid-template-columns:repeat(3,1fr);gap:2.5rem}
+  .process-steps{grid-template-columns:repeat(3,1fr);gap:2.5rem 1.5rem}
   .process-steps::before{display:none}
+  .process-step:nth-child(1)::after,
+  .process-step:nth-child(2)::after,
+  .process-step:nth-child(4)::after,
+  .process-step:nth-child(5)::after{content:'';position:absolute;top:28px;left:calc(50% + 28px);right:calc(-1.5rem - 50% + 28px);height:1px;background:rgba(255,255,255,.15);z-index:0}
+  .process-step:nth-child(3)::after{content:'';position:absolute;top:28px;left:calc(50% + 28px);right:0;height:1px;background:rgba(255,255,255,.15);z-index:0}
+  .process-step:nth-child(4)::before{content:'';position:absolute;top:28px;left:0;right:calc(50% + 28px);height:1px;background:rgba(255,255,255,.15);z-index:0}
 }
-@media(max-width:500px){.process-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.process-steps{grid-template-columns:repeat(3,1fr)}}
 .process-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
 .step-num{width:56px;height:56px;border-radius:50%;background:#fff;border:none;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.2rem;color:var(--g700);margin-bottom:1.2rem;flex-shrink:0;transition:background .3s,color .3s}
 .process-step:hover .step-num{background:var(--g500);color:#fff}
@@ -168,7 +198,17 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .pricing{max-width:1320px;margin:0 auto;padding:clamp(5rem,8vw,7rem) clamp(1.5rem,3vw,3rem)}
 .pricing-top{margin-bottom:3rem}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;align-items:start}
-@media(max-width:800px){.pricing-grid{grid-template-columns:1fr}}
+@media(max-width:800px){
+  .pricing{padding-left:0;padding-right:0}
+  .pricing-top{padding:0 clamp(1.5rem,3vw,3rem)}
+  .pricing-note{padding:0 clamp(1.5rem,3vw,3rem)}
+  .pricing-grid{display:flex;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0.75rem;padding:.5rem 0 2rem;scrollbar-width:none;align-items:center}
+  .pricing-grid::-webkit-scrollbar{display:none}
+  .pricing-card{flex:0 0 48vw;max-width:none;scroll-snap-align:center;transition:transform .35s cubic-bezier(.25,1,.5,1),opacity .35s;transform:scale(.88);opacity:.5;padding:1.25rem}
+  .pricing-card.is-center{transform:scale(1);opacity:1}
+  .pricing-price{font-size:1.5rem}
+  .pricing-name{font-size:1.15rem}
+}
 .pricing-card{border-radius:16px;padding:2rem;border:1px solid var(--bdr2);position:relative;background:var(--bg)}
 .pricing-card.featured{background:var(--g600);border-color:var(--g600)}
 .pricing-badge{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--g100);color:var(--g600);padding:4px 10px;border-radius:100px;font-weight:500;display:inline-block;margin-bottom:1.2rem}
@@ -200,7 +240,7 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .about{background:var(--bg2);padding:clamp(5rem,8vw,7rem) 0}
 .about-inner{max-width:1320px;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem)}
 .about-grid{display:grid;grid-template-columns:minmax(auto,400px) 1fr;gap:clamp(3rem,5vw,5rem);align-items:stretch}
-@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}.about-text{order:1 !important}.about-photo-wrap{order:2 !important}}
 .about-text{order:2;display:flex;flex-direction:column;justify-content:center}
 .about-text .section-lbl{margin-bottom:.6rem}
 .about-text .section-h{font-size:clamp(2rem,3vw,2.8rem);margin-bottom:0}
@@ -233,9 +273,10 @@ body{font-family:var(--sans);color:var(--t2);background:var(--bg);-webkit-font-s
 .btn-li:hover{background:#0a66c2;color:#fff}
 
 /* ═══ STAT COUNTER ═══ */
-.stat-hero{text-align:center;margin-bottom:0}
-.stat-number{font-family:var(--serif);font-size:clamp(5rem,12vw,9rem);font-weight:400;color:var(--t1);line-height:1;letter-spacing:-.01em}
-.stat-sub{font-size:clamp(.95rem,1.8vw,1.2rem);color:var(--t3);margin-top:.5rem;font-weight:300}
+.stat-hero{display:flex;align-items:flex-end;gap:1.2rem;margin-bottom:0;margin-top:1.5rem}
+.stat-number{font-family:var(--serif);font-size:clamp(6rem,13vw,11rem);font-weight:400;color:var(--t1);line-height:1;letter-spacing:-.01em;flex-shrink:0}
+.stat-sub{font-size:clamp(.9rem,1.5vw,1.1rem);color:var(--t1);font-weight:300;line-height:1.45;max-width:180px;padding-bottom:.15em}
+
 
 /* ═══ CTA ═══ */
 .cta{max-width:1320px;margin:0 auto;padding:clamp(3rem,5vw,5rem) clamp(1.5rem,3vw,3rem) clamp(5rem,8vw,7rem)}
@@ -287,7 +328,6 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
       <img src="https://harukitsubaki.github.io/White_NBG.png" class="nav-logo logo-white" alt="Tsubaki Consulting">
       <img src="https://harukitsubaki.github.io/Black_NBG.png" class="nav-logo logo-dark" alt="Tsubaki Consulting">
     </a>
-    <button class="mob-tog" aria-label="Menu"><span></span><span></span></button>
     <div class="nav-center">
       <a href="#services">Services</a>
       <a href="#process">Process</a>
@@ -297,6 +337,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
     </div>
     <div class="nav-right">
       <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-nav">Book a Free Session</a>
+      <button class="mob-tog" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
 </nav>
@@ -323,19 +364,23 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
 
 <!-- STATEMENT -->
 <section class="statement" id="about-intro">
-  <div class="statement-center">
-    <h2 class="statement-heading rv">Small businesses <em>go broke</em><br>faster than <em>people think.</em></h2>
-    <div class="stat-hero rv d1">
-      <div class="stat-number"><span id="statCounter">0</span>%</div>
-      <div class="stat-sub">of small businesses fail within 5 years.</div>
+  <div class="statement-split">
+    <div class="statement-left">
+      <h2 class="statement-heading rv">Small businesses <em>go broke</em><br>faster than <em>people think.</em></h2>
+      <div class="stat-hero rv d1">
+        <div class="stat-number"><span id="statCounter">0</span>%</div>
+        <div class="stat-sub">of small businesses fail within 5 years.</div>
+      </div>
     </div>
-    <div class="statement-desc rv d2">
-      <p>Not because the owner isn't working hard. Most are working harder than anyone around them.</p>
-      <p>They go broke because the wrong things are getting the time, the money is leaking in places nobody's looked at, and by the time the numbers make it obvious — it's too late.</p>
-      <p>Every week you spend figuring it out yourself is a week your competitors aren't standing still. The market doesn't wait. Your costs don't pause while you trial and error your way to a strategy.</p>
-      <p>The business owners who scale are not the ones who worked the hardest. They're the ones who got the right advice early enough to act on it.</p>
-      <div class="statement-cta">
-        <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-solid">Book a Free Session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+    <div class="statement-right">
+      <div class="statement-desc rv d2">
+        <p>Not because the owner isn't working hard. Most are working harder than anyone around them.</p>
+        <p>They go broke because the wrong things are getting the time, the money is leaking in places nobody's looked at, and by the time the numbers make it obvious — it's too late.</p>
+        <p>Every week you spend figuring it out yourself is a week your competitors aren't standing still. The market doesn't wait. Your costs don't pause while you trial and error your way to a strategy.</p>
+        <p>The business owners who scale are not the ones who worked the hardest. They're the ones who got the right advice early enough to act on it.</p>
+        <div class="statement-cta">
+          <a href="https://calendar.app.google/GD65SghvQBgQeEh78" target="_blank" rel="noopener" class="btn-solid">Book a Free Session <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+        </div>
       </div>
     </div>
   </div>
@@ -484,7 +529,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
     <div class="pricing-card featured rv d1">
       <span class="pricing-badge">Most popular</span>
       <div class="pricing-name">Monthly Advisory</div>
-      <div class="pricing-price">From $1,990</div>
+      <div class="pricing-price">$2,990</div>
       <div class="pricing-period">per month, no lock-in</div>
       <div class="pricing-divider"></div>
       <ul class="pricing-features">
@@ -515,7 +560,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
   </div>
   <p class="pricing-note rv">All prices are starting points. Custom quotes available depending on scope and business size.</p>
 </section>
-  
+
 <!-- ABOUT ME -->
 <section class="about" id="about">
   <div class="about-inner">
@@ -544,8 +589,8 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
         </div>
         <div class="about-body">
           <p>I've worked alongside several business owners as their right hand. Watching decisions get made under real pressure, with real consequences, where the problem is sitting on the table and someone has to call it.</p>
-          <p>Through that, I've taken three small businesses from 'Losing money' to 'Making money'. Each one different. Each one with a version of the same underlying issue — too much effort going into the wrong places.</p>
-          <p>Which is why I work the way I do and if I do, I'm 100% all in. As Michael Porter put it - "The essence of strategy is choosing what not to do." Effort is not the shortage. Direction is.</p>
+          <p>Through that, I've taken three small businesses from losing money to making money. Each one different. Each one with a version of the same underlying issue — too much effort going into the wrong places.</p>
+          <p>Which is why I work the way I do and if I do, I'm 100% all in. As Michael Porter put it: "The essence of strategy is choosing what not to do." Effort is not the shortage. Direction is.</p>
           <p>I'm based in Brisbane and work with small to medium business owners across Australia who are done spinning their wheels and ready to make a move.</p>
         </div>
         <div style="margin-top:2rem">
@@ -572,7 +617,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
       <div class="testi-quote">"</div>
-      <p class="testi-text">Harry came in, looked at everything from our booking system to how we scale out business, and gave us a clear list of what to fix first. Revenue is up roughly 400% YoY over the last three months.</p>
+      <p class="testi-text">Harry came in, looked at everything from our booking system to how we scale our business, and gave us a clear list of what to fix first. Revenue is up roughly 400% YoY over the last three months.</p>
       <div class="testi-meta">
         <div class="testi-name">Gary C.</div>
         <div class="testi-biz">Owner &middot; Tour Business</div>
@@ -587,7 +632,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
       <div class="testi-quote">"</div>
-      <p class="testi-text">I'd spoken to Brisbane-based agencies before who quoted me $5k for a strategy deck I could've just Googled myself. Harry stepped in, charged a fair price, gave me a action-oriented plan, built our website from scratch, and handed over something that actually runs. If your business needs a help, no Brainer - just ask Harry.</p>
+      <p class="testi-text">I'd spoken to Brisbane-based agencies before who quoted me $5k for a strategy deck I could've Googled myself. Harry stepped in, charged a fair price, gave me an action plan, built our website from scratch, and handed over something that actually runs. If your business needs help — no brainer, just ask Harry.</p>
       <div class="testi-meta">
         <div class="testi-name">Mark T.</div>
         <div class="testi-biz">Owner &middot; Tour Business</div>
@@ -602,7 +647,7 @@ footer{background:var(--t1);color:rgba(255,255,255,.5);padding:clamp(2.5rem,4vw,
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
       <div class="testi-quote">"</div>
-      <p class="testi-text">He's a direct and trustworthy man. If something isn't working he'll say so, and he'll tell you exactly why. That saved us from dumping more money at the wrong problem. Two years of let's test and learn and now we finally have a plan.</p>
+      <p class="testi-text">He's direct and trustworthy. If something isn't working he'll say so, and he'll tell you exactly why. That saved us from dumping more money at the wrong problem. Two years of "let's test and learn" and now we finally have a real plan.</p>
       <div class="testi-meta">
         <div class="testi-name">John N.</div>
         <div class="testi-biz">Founder &middot; Travel Agency</div>
@@ -715,6 +760,52 @@ if (statEl) {
   }, { threshold: 0.3 });
   statObs.observe(statEl.closest('.stat-hero'));
 }
+
+// Pricing carousel — scale center card on mobile
+function initPricingCarousel(){
+  const grid = document.querySelector('.pricing-grid');
+  if(!grid || window.innerWidth > 800) return;
+  const cards = grid.querySelectorAll('.pricing-card');
+  function update(){
+    const cx = grid.scrollLeft + grid.offsetWidth / 2;
+    let best = null, minD = Infinity;
+    cards.forEach(c => {
+      const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - cx);
+      if(d < minD){ minD = d; best = c; }
+    });
+    cards.forEach(c => c.classList.toggle('is-center', c === best));
+  }
+  grid.addEventListener('scroll', update, {passive:true});
+  const featured = grid.querySelector('.featured');
+  setTimeout(() => {
+    if(featured) grid.scrollLeft = featured.offsetLeft - (grid.offsetWidth - featured.offsetWidth) / 2;
+    update();
+  }, 80);
+}
+initPricingCarousel();
+
+// Testimonials — scroll to middle card on mobile
+function initTestiCarousel(){
+  const grid = document.querySelector('.testi-grid');
+  if(!grid || window.innerWidth > 900) return;
+  const cards = grid.querySelectorAll('.testi-card');
+  if(cards.length < 2) return;
+  setTimeout(() => {
+    const mid = cards[1];
+    grid.scrollLeft = mid.offsetLeft - (grid.offsetWidth - mid.offsetWidth) / 2;
+  }, 80);
+}
+initTestiCarousel();
+
+// Service card accordion on mobile
+document.querySelectorAll('.svc-card').forEach(card => {
+  card.addEventListener('click', () => {
+    if(window.innerWidth > 580) return;
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.svc-card').forEach(c => c.classList.remove('open'));
+    if(!wasOpen) card.classList.add('open');
+  });
+});
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
